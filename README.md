@@ -5,7 +5,6 @@ A comprehensive payment and fine management system for **Zeal College of Enginee
 ![Node.js](https://img.shields.io/badge/Node.js-v18+-green)
 ![React](https://img.shields.io/badge/React-v18+-blue)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
@@ -255,7 +254,11 @@ A sample file is provided at `Internship-backend/sample-data/students-sample.csv
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+**Proprietary Software - Internal Use Only**
+
+This software is developed exclusively for **Zeal College of Engineering and Research** (IT Department). Unauthorized copying, distribution, modification, or use of this file, via any medium, is strictly prohibited.
+
+All rights reserved.
 
 ---
 
