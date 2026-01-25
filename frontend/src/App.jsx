@@ -15,6 +15,7 @@ import StudentDetails from './pages/StudentDetails';
 import AddPayment from './pages/AddPayment';
 import AddExpenditure from './pages/AddExpenditure';
 import ManageCategories from './pages/ManageCategories';
+import About from './pages/About';
 
 // New Report Pages
 import ExpenditureReport from './pages/ExpenditureReport';
@@ -123,6 +124,17 @@ function App() {
                     <ProtectedRoute>
                         <AuthenticatedLayout>
                             <ManageCategories />
+                        </AuthenticatedLayout>
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/about"
+                element={
+                    <ProtectedRoute>
+                        <AuthenticatedLayout>
+                            <About />
                         </AuthenticatedLayout>
                     </ProtectedRoute>
                 }
