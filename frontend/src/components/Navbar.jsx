@@ -12,7 +12,8 @@ import {
     FiUser,
     FiTag,
     FiFileText,
-    FiChevronDown
+    FiChevronDown,
+    FiInfo
 } from 'react-icons/fi';
 import { FaRupeeSign } from 'react-icons/fa';
 
@@ -124,6 +125,18 @@ const Navbar = () => {
                                 </div>
                             )}
                         </div>
+
+                        {/* About Link */}
+                        <Link
+                            to="/about"
+                            className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${isActive('/about')
+                                ? 'bg-white/20 text-white'
+                                : 'text-white/80 hover:bg-white/10 hover:text-white'
+                                }`}
+                        >
+                            <FiInfo className="w-4 h-4" />
+                            <span className="text-sm font-medium">About</span>
+                        </Link>
                     </div>
 
                     {/* User Menu */}
@@ -192,6 +205,19 @@ const Navbar = () => {
                                 </Link>
                             ))}
                         </div>
+
+                        <Link
+                            to="/about"
+                            onClick={() => setIsOpen(false)}
+                            className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive('/about')
+                                ? 'bg-white/20 text-white'
+                                : 'text-white/80 hover:bg-white/10'
+                                }`}
+                        >
+                            <FiInfo className="w-5 h-5" />
+                            <span className="font-medium">About</span>
+                        </Link>
+
                         <hr className="border-white/20 my-2" />
                         <div className="flex items-center justify-between px-4 py-3">
                             <div className="flex items-center space-x-2">
