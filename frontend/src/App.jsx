@@ -18,8 +18,6 @@ import ManageCategories from './pages/ManageCategories';
 import About from './pages/About';
 
 // New Report Pages
-import ExpenditureReport from './pages/ExpenditureReport';
-import StudentPayments from './pages/StudentPayments';
 import StudentManagement from './pages/StudentManagement';
 import TransactionReport from './pages/TransactionReport';
 
@@ -141,28 +139,6 @@ function App() {
             />
 
             {/* New Report Routes */}
-            <Route
-                path="/admin/expenditures"
-                element={
-                    <ProtectedRoute>
-                        <AuthenticatedLayout>
-                            <ExpenditureReport />
-                        </AuthenticatedLayout>
-                    </ProtectedRoute>
-                }
-            />
-
-            <Route
-                path="/admin/student-payments"
-                element={
-                    <ProtectedRoute>
-                        <AuthenticatedLayout>
-                            <StudentPayments />
-                        </AuthenticatedLayout>
-                    </ProtectedRoute>
-                }
-            />
-
             <Route
                 path="/admin/students"
                 element={
