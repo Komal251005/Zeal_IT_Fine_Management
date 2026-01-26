@@ -69,7 +69,7 @@ const Dashboard = () => {
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 {/* Total Income */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover">
+                <Link to="/admin/transactions" className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover cursor-pointer hover:border-green-200 transition-colors">
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm font-medium text-gray-500">Total Income</p>
@@ -83,17 +83,17 @@ const Dashboard = () => {
                             <FiTrendingUp className="w-6 h-6 text-white" />
                         </div>
                     </div>
-                </div>
+                </Link>
 
                 {/* Total Expenditure */}
-                <Link to="/admin/expenditures" className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover cursor-pointer hover:border-red-200 transition-colors">
+                <Link to="/admin/transactions" className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover cursor-pointer hover:border-red-200 transition-colors">
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm font-medium text-gray-500">Total Expenditure</p>
                             <p className="text-2xl font-bold text-gray-800 mt-1">
                                 {formatCurrency(summary?.financial?.totalExpenditure)}
                             </p>
-                            <p className="text-xs text-gray-400 mt-1">Click to view report →</p>
+                            <p className="text-xs text-gray-400 mt-1">Click to view transactions →</p>
                         </div>
                         <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-xl 
                             flex items-center justify-center shadow-lg shadow-red-200">
@@ -121,7 +121,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Total Students */}
-                <a href="/admin/students" target="_blank" rel="noopener noreferrer"
+                <Link to="/admin/students"
                     className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover cursor-pointer hover:border-purple-200 transition-colors">
                     <div className="flex items-center justify-between">
                         <div>
@@ -136,7 +136,7 @@ const Dashboard = () => {
                             <FiUsers className="w-6 h-6 text-white" />
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
 
             {/* Quick Stats Row */}
@@ -156,7 +156,7 @@ const Dashboard = () => {
                     </div>
                 </Link>
 
-                <Link to="/admin/student-payments"
+                <Link to="/admin/transactions"
                     className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200 hover:border-blue-300 transition-colors cursor-pointer">
                     <div className="flex items-center space-x-4">
                         <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">

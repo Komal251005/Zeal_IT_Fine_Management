@@ -57,6 +57,7 @@ export const studentsAPI = {
         },
     }),
     getAll: (params) => api.get('/students', { params }),
+    search: (query) => api.get('/students/search', { params: { query } }),
     searchByPRN: (prn) => api.get(`/students/search/${prn}`),
     getByPRN: (prn) => api.get(`/students/${prn}`),
     addFine: (prn, fineData) => api.post(`/students/add-fine/${prn}`, fineData),

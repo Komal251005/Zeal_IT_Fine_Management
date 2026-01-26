@@ -232,6 +232,44 @@ const searchStudentByPRN = asyncHandler(async (req, res) => {
 });
 
 /**
+ * @desc    Search students by name or PRN (Autocomplete)
+ * @route   GET /api/students/search
+ * @access  Private
+ * 
+ * Query Params:
+ * - query: Search term (name or prn)
+ * - limit: Max results (default 10)
+ */
+const searchStudents = asyncHandler(async (req, res) => {
+    const { query } = req.query;
+    const limit = parseInt(req.query.limit) || 10;
+
+    if (!query) {
+        res.status(400);
+        throw new Error('Please provide a search query');
+    }
+
+    // Escape special regex characters
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    // Search by PRN or Name (case-insensitive)
+    const students = await Student.find({
+        $or: [
+            { prn: { $regex: escapedQuery, $options: 'i' } },
+            { name: { $regex: escapedQuery, $options: 'i' } }
+        ]
+    })
+        .limit(limit)
+        .select('prn name department year division rollNo email phone fines');
+
+    res.status(200).json({
+        success: true,
+        count: students.length,
+        data: students
+    });
+});
+
+/**
  * @desc    Get student by PRN (alias for search)
  * @route   GET /api/students/:prn
  * @access  Private
@@ -261,7 +299,7 @@ const getStudentByPRN = asyncHandler(async (req, res) => {
  */
 const addFineToStudent = asyncHandler(async (req, res) => {
     const { prn } = req.params;
-    const { amount, reason, type, category, date } = req.body;
+    const { amount, reason, type, category, date, sendEmail = true } = req.body;
 
     // Validate required fields (only amount is required now)
     if (!amount) {
@@ -307,10 +345,12 @@ const addFineToStudent = asyncHandler(async (req, res) => {
     // Get the saved payment with _id
     const savedPayment = student.fines[student.fines.length - 1];
 
-    // Send email receipt to student (async, don't wait)
-    sendPaymentReceiptEmail(student, savedPayment).catch(err => {
-        console.error('Email sending failed:', err.message);
-    });
+    // Send email receipt to student (async, don't wait) - only if sendEmail is true
+    if (sendEmail) {
+        sendPaymentReceiptEmail(student, savedPayment).catch(err => {
+            console.error('Email sending failed:', err.message);
+        });
+    }
 
     res.status(201).json({
         success: true,
@@ -782,6 +822,7 @@ module.exports = {
     deleteStudentsByDivision,
     deleteStudentsByYear,
     deleteStudentsByClass,
-    getAllStudentsAdvanced
+    getAllStudentsAdvanced,
+    searchStudents
 };
 

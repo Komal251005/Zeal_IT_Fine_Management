@@ -166,6 +166,7 @@ const studentSchema = new mongoose.Schema({
  * Calculate total fines amount for the student
  */
 studentSchema.virtual('totalFines').get(function () {
+    if (!this.fines) return 0;
     return this.fines.reduce((total, fine) => total + fine.amount, 0);
 });
 
@@ -173,6 +174,7 @@ studentSchema.virtual('totalFines').get(function () {
  * Calculate total unpaid fines
  */
 studentSchema.virtual('unpaidFines').get(function () {
+    if (!this.fines) return 0;
     return this.fines
         .filter(fine => !fine.isPaid)
         .reduce((total, fine) => total + fine.amount, 0);
@@ -182,6 +184,7 @@ studentSchema.virtual('unpaidFines').get(function () {
  * Get count of fines
  */
 studentSchema.virtual('fineCount').get(function () {
+    if (!this.fines) return 0;
     return this.fines.length;
 });
 

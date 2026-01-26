@@ -22,7 +22,8 @@ const {
     deleteStudentsByDivision,
     deleteStudentsByYear,
     deleteStudentsByClass,
-    getAllStudentsAdvanced
+    getAllStudentsAdvanced,
+    searchStudents
 } = require('../controllers/studentController');
 const { protect } = require('../middleware/authMiddleware');
 const { upload, handleMulterError } = require('../middleware/uploadMiddleware');
@@ -62,6 +63,13 @@ router.post('/upload-csv',
  * - hasFines: Filter students with fines (true/false)
  */
 router.get('/', getAllStudents);
+
+/**
+ * @route   GET /api/students/search
+ * @desc    Search students by name or PRN (Autocomplete)
+ * @access  Private
+ */
+router.get('/search', searchStudents);
 
 /**
  * @route   GET /api/students/search/:prn

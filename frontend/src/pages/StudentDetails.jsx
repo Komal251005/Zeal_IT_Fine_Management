@@ -189,7 +189,7 @@ const StudentDetails = () => {
 
                         <div className="flex flex-col p-3 bg-gray-50 rounded-lg">
                             <p className="text-xs text-gray-500 uppercase tracking-wide">Department</p>
-                            <p className="text-sm font-medium text-gray-800">{student?.department || student?.division || 'N/A'}</p>
+                            <p className="text-sm font-medium text-gray-800">{'IT'}</p>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@ const StudentDetails = () => {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-gray-500">Total Fines</p>
+                            <p className="text-sm text-gray-500">Total Fees</p>
                             <p className="text-2xl font-bold text-gray-800">{formatCurrency(totalFines)}</p>
                         </div>
                         <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">

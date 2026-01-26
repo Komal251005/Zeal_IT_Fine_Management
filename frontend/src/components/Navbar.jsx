@@ -39,8 +39,6 @@ const Navbar = () => {
     ];
 
     const reportLinks = [
-        { path: '/admin/expenditures', label: 'Expenditure Report' },
-        { path: '/admin/student-payments', label: 'Student Payments' },
         { path: '/admin/students', label: 'Student Management' },
         { path: '/admin/transactions', label: 'Transactions' },
     ];
